@@ -41,7 +41,7 @@ if (len(argv) != 4):
 projectname, host, port, filename = argv
 
 if int(port) < 1024 or int(port) > 65535:
-    sys.stderr.write("[ERROR]: Invalid port! Must between 1 and 65535")
+    sys.stderr.write("ERROR:")
     sys.exit(1)
 
 
