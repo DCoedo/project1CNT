@@ -40,7 +40,7 @@ if (len(argv) != 4):
 #Arguments needed
 projectname, host, port, filename = argv
 
-if int(port) < 1024 or int(port) > 65535:
+if int(port) < 1 or int(port) > 65535:
     sys.stderr.write("ERROR:")
     sys.exit(1)
 
