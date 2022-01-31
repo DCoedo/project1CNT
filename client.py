@@ -6,7 +6,7 @@ def getMsg(string):
     msg = string
     bytes = b""
     while bytes != msg:
-        bytes += sock.recv(1024)
+        bytes += sock.recv(2022)
         if bytes == msg:
             break
         if msg.find(bytes) != 0:
@@ -47,7 +47,7 @@ if int(port) < 1 or int(port) > 65535:
 
 #10 second timeout counter
 sock.settimeout(10)
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 4044)
 
 try:
     sock.connect((host, int(port)))
