@@ -66,7 +66,7 @@ try:
     sock.close()
 
 except socket.error: #TimeOut
-    sys.stderr.write("[ERROR]: Time-out error - connection took to long to be established.")
+    sys.stderr.write("ERROR:")
     sys.exit(1)
 
 sys.exit(0)
