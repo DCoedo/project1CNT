@@ -1,6 +1,6 @@
 import socket
 import sys
-from sys import argv
+import argparse
 
 def getMsg(string):
     msg = string
@@ -32,13 +32,12 @@ def mail(filename, sock):
 #Connects Client and Binds them to the address
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-if (len(argv) != 4):
-    print("[ERROR]: Check command line parameters.")
-    sys.exit(1)
-
-
-#Arguments needed
-projectname, host, port, filename = argv
+#Arguments Needed - Parser
+parser = argparse.ArgumentParser()
+parser.add_argument("host", type = str, help = "Host name")
+parser.add_argument("port", type = int, help = "Port number")
+parser.add_argument("filename", type = str, help = "File name")
+args = parser.parse_args()
 
 if int(port) < 1 or int(port) > 65535:
     sys.stderr.write("ERROR:")
@@ -50,7 +49,7 @@ sock.settimeout(10)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 4044)
 
 try:
-    sock.connect((host, int(port)))
+    sock.connect((args.host, args.port))
 
     getMsg(b"accio\r\n")# First Message
 
@@ -62,7 +61,7 @@ try:
 
     sent = sock.send(b"\r\n")
 
-    mail(filename, sock)
+    mail(args.filename, sock)
     sock.close()
 
 except socket.error: #TimeOut
