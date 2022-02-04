@@ -39,7 +39,7 @@ parser.add_argument("port", type = int, help = "Port number")
 parser.add_argument("filename", type = str, help = "File name")
 args = parser.parse_args()
 
-if int(port) < 1 or int(port) > 65535:
+if args.port < 1 or args.port > 65535:
     sys.stderr.write("ERROR:")
     sys.exit(1)
 
