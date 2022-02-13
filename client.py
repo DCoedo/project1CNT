@@ -4,9 +4,9 @@ import argparse
 
 def getMsg(string):
     msg = string
-    bytes = b""
-    while bytes != msg:
-        bytes += sock.recv(2022)
+    b = b""
+    while b != msg:
+        b += sock.recv(2022)
         
 
 def mail(filename, sock):
