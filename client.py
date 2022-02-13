@@ -3,10 +3,11 @@ import sys
 import argparse
 
 def getMsg(string):
-    msg = s.recv(1024)
-    while msg:
-        print('Received:' + msg.decode())
-        msg = s.recv(1024)
+    msg = string
+    bytes = b""
+    while bytes != msg:
+        bytes += sock.recv(2022)
+        
 
 def mail(filename, sock):
     try:
