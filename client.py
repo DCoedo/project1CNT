@@ -12,17 +12,12 @@ def getMsg(string):
 def mail(filename, sock):
     try:
         file = open(filename, "rb")
-    except FileNotFoundError:
-        print(f"The file named {filename} doesn't exit.")
-        quit()
-    else:
         while True:
-            portion = file.read(10000)
-            if portion:
-                sock.send(portion)
+            readFile = file.read(10000)
+            sock.send(portion)
             else:
-                file.close()
                 break
+    file.close()
 
 
 #Connects Client and Binds them to the address
