@@ -7,20 +7,17 @@ def getMsg(string):
     bytes = b""
     while bytes != msg:
         bytes += sock.recv(2022)
-        
+
 def mail(filename, sock):
-    try:
-        file = open(filename, "rb")
-    else:
-        while True:
-            readFile = file.read(10000)
-            if readFile:
-                sock.send(readFile)
-            else:
-                file.close()
-                break
-
-
+    file = open(filename, "rb")
+    while True:
+        readFile = file.read(10000)
+        if readFile:
+            sock.send(readFile)
+        else:
+            file.close()
+            break
+            
 #Connects Client and Binds them to the address
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
